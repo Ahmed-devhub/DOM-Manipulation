@@ -106,17 +106,16 @@ topMenuEl.addEventListener("click", function (evt) {
 // Part 5: Adding Submenu Interaction
 
 subMenuEl.addEventListener("click", function (event) {
-  event.preventDefault();
-
   let clickChild = event.target;
-
+  event.preventDefault();
   if (clickChild.tagName !== "A") return;
-
-  console.log(clickChild.textContent);
-  subMenuEl.style.top = "0";
-
+  event.preventDefault();
   topMenuLinks.forEach((link) => link.classList.remove("active"));
-
-  const h1 = document.createElement("h1");
-  mainEl.innerHTML = `<h1>${clickChild.textContent}</h1>`;
+  console.log(clickChild.textContent);
+  if (clickChild.textContent.toLowerCase() === "about") {
+    mainEl.innerHTML = "<h1>ABOUT</h1>";
+  } 
+  else {
+    mainEl.innerHTML = `<h1>${clickChild.textContent}</h1>`
+  }
 });
